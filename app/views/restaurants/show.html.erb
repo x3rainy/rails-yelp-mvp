@@ -1,0 +1,24 @@
+<div class="p-4">
+  <h1><%= @restaurant.name %></h1>
+  <h5>Address: <%= @restaurant.address %></h5>
+
+  <div class="alert alert-info w-50" style="position: unset; bottom: auto; right: auto;">
+    <p class="text-primary">Well known for it's <%= @restaurant.category %> food!</p>
+    <p>Phone Number: <%= @restaurant.phone_number %></p>
+    <%= render 'reviews/form', restaurant: @restaurant, review: @review %>
+  </div>
+
+  <%= link_to 'Back to listings', restaurants_path, class: "btn btn-warning mb-3" %>
+
+  <h5>Recent comments about this restaurant:</h5>
+  <ul class="p-0">
+    <% @reviews.each do |review| %>
+    <li class="rounded bg-success p-2 my-2 w-50" style="list-style: none;">
+      <div class="d-flex justify-content-between">
+        <p><%= review.content %></p>
+        <p>Stars: <%= review.rating %></p>
+      </div>
+    </li>
+    <% end %>
+  </ul>
+</div>
